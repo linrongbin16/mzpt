@@ -1,6 +1,21 @@
 # zsh-prompt
 
-prompt for zsh
+A prompt theme for zsh
+
+# Introduction
+
+![screenshot.png](https://raw.githubusercontent.com/linrongbin16/zsh-prompt-screenshot/main/screenshot-basic1.png)
+
+- `( base)`: [miniconda](https://docs.conda.io/en/latest/miniconda.html) python version.
+- `username@hostname`: username and hostname.
+- ` ~/.zsh-prompt`: operating system and working directory.
+- `( main*)`: git branch and changes if exist.
+- `09:31`: 24h-format local time (HH:mm).
+- `[√]/[?130]`: last command exit status.
+
+# Requirement
+
+- [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) for icons.
 
 # Installation
 
