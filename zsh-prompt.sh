@@ -108,8 +108,8 @@ _zsh_prompt_delimiter() {
     local _dir_value=$(dirs)
     local _dir_len=${#_dir_value}
     local _git_len=${#_ZSH_PROMPT_GIT}
-    local _left_len=$(($_username_len+1+$_hostname_len+1+$_os_len+$_dir_len+1+$_git_len))
-    local _right_len=$((1+$_conda_len+6+2+$_exit_code_len))
+    local _left_len=$(($_username_len+1+$_hostname_len+1+$_os_len+$_dir_len+1+$_git_len+2+$_exit_code_len))
+    local _right_len=$((1+$_conda_len+6))
     local _delimiter_len=$(($COLUMNS-$_left_len-$_right_len))
     _ZSH_PROMPT_DELIMITER=$(printf "%${_delimiter_len}s" | tr " " "─")
 }
@@ -128,5 +128,5 @@ precmd_functions+=( _zsh_prompt_precmd )
 
 setopt prompt_subst
 
-export PROMPT='%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_ZSH_PROMPT_OS}%~%f %F{magenta}${_ZSH_PROMPT_GIT}%f%F{#606060}${_ZSH_PROMPT_DELIMITER}%f %F{#FF8000}${_ZSH_PROMPT_CONDA}%f%D{%H:%M} [%(?.%F{green}√.%F{red}?%?)%f]
+export PROMPT='%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_ZSH_PROMPT_OS}%~%f %F{magenta}${_ZSH_PROMPT_GIT}%f[%(?.%F{green}√.%F{red}?%?)%f] %F{#606060}${_ZSH_PROMPT_DELIMITER}%f %F{#FF8000}${_ZSH_PROMPT_CONDA}%f%D{%H:%M}
 %F{blue}%(!.#.$)%f '
