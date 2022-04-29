@@ -6,7 +6,7 @@ A prompt theme for zsh
 
 ![screenshot.png](https://raw.githubusercontent.com/linrongbin16/zsh-prompt-screenshot/main/screenshot-basic1.png)
 
-- `( base)`: [miniconda](https://docs.conda.io/en/latest/miniconda.html) python version.
+- `( base)`: [miniconda](https://docs.conda.io/en/latest/miniconda.html) environment.
 - `username@hostname`: username and hostname.
 - ` ~/.zsh-prompt`: operating system and working directory.
 - `( main*)`: git branch and changes if exist.
