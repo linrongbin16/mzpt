@@ -1,10 +1,10 @@
-# zsh-prompt
+# lin-zsh-prompt
 
 A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
 # Introduction
 
-![screenshot.png](https://raw.githubusercontent.com/linrongbin16/zsh-prompt-screenshot/main/screenshot-basic2.png)
+![screenshot.png](https://raw.githubusercontent.com/linrongbin16/lin-zsh-prompt-screenshot/main/screenshot-basic2.png)
 
 - Left Side:
   - `username@hostname`: username and hostname.
