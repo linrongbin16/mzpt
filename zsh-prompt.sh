@@ -80,5 +80,6 @@ precmd_functions+=( _detect_os )
 
 setopt prompt_subst
 
-export PROMPT='%F{#FF8000}${_PROMPT_CONDA_ENV}%f%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_PROMPT_OS_ENV}%~%f %F{magenta}${_PROMPT_GIT_ENV}%f%D{%H:%M} [%(?.%F{green}√.%F{red}?%?)%f]
+export RPROMPT='%F{#FF8000}${_PROMPT_CONDA_ENV}%f%D{%H:%M}'
+export PROMPT='%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_PROMPT_OS_ENV}%~%f %F{magenta}${_PROMPT_GIT_ENV}%f [%(?.%F{green}√.%F{red}?%?)%f]
 %F{blue}%(!.#.$)%f '
