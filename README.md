@@ -4,14 +4,16 @@ A prompt theme for zsh
 
 # Introduction
 
-![screenshot.png](https://raw.githubusercontent.com/linrongbin16/zsh-prompt-screenshot/main/screenshot-basic1.png)
+![screenshot.png](https://raw.githubusercontent.com/linrongbin16/zsh-prompt-screenshot/main/screenshot-basic2.png)
 
-- `( base)`: [miniconda](https://docs.conda.io/en/latest/miniconda.html) environment.
-- `username@hostname`: username and hostname.
-- ` ~/.zsh-prompt`: operating system and working directory.
-- `( main*)`: git branch and changes if exist.
-- `09:31`: 24h-format local time (HH:mm).
-- `[√]/[?130]`: last command exit status.
+- Left Side:
+  - `username@hostname`: username and hostname.
+  - ` ~/.zsh-prompt`: operating system and working directory.
+  - `( main*)`: git branch and modified/deleted/untracted files if exist.
+  - `[√]/[?130]`: last command exit status.
+- Right Side:
+  - `( base)`: [miniconda](https://docs.conda.io/en/latest/miniconda.html) environment.
+  - `09:31`: 24h-format local time (HH:mm).
 
 # Requirement
 
