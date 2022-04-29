@@ -11,7 +11,9 @@ _detect() {
     _detect_os
 }
 
-precmd_functions+=( _detect )
+precmd_functions+=( _detect_os )
+preexec_functions+=( _detect_conda )
+preexec_functions+=( _detect_git )
 
 setopt prompt_subst
 
