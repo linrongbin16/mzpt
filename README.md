@@ -1,6 +1,6 @@
 # zsh-prompt
 
-A prompt theme for zsh
+A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
 # Introduction
 
