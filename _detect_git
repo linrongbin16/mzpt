@@ -1,0 +1,10 @@
+local git_branch="$(git branch --show-current 2>/dev/null)"
+if [ ! -z "$git_branch" ]; then
+    if [ ! -z "$(git ls-files --exclude-standard --others -md)" ]; then
+        _PROMPT_GIT_ENV="( $git_branch*) "
+    else
+        _PROMPT_GIT_ENV="( $git_branch) "
+    fi
+else
+    _PROMPT_GIT_ENV=""
+fi
