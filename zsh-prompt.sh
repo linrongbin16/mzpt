@@ -12,6 +12,7 @@ _detect() {
 }
 
 precmd_functions+=( _detect_os )
+chpwd_functions+=( _detect_git )
 preexec_functions+=( _detect_conda )
 preexec_functions+=( _detect_git )
 
