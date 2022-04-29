@@ -8,7 +8,7 @@ A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.co
 
 - Left Side:
   - `username@hostname`: username and hostname.
-  - ` ~/.zsh-prompt`: operating system and working directory.
+  - ` ~/.lin-zsh-prompt`: operating system and working directory.
   - `( main*)`: git branch and modified/deleted/untracted files if exist.
   - `[√]/[?130]`: last command exit status.
 - Right Side:
@@ -22,8 +22,8 @@ A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.co
 # Installation
 
 ```bash
-git clone https://github.com/linrongbin16/zsh-prompt.git ~/.zsh-prompt
-echo '[ -f ~/.zsh-prompt/zsh-prompt.sh ] && source ~/.zsh-prompt/zsh-prompt.sh' >> ~/.zshrc
+git clone https://github.com/linrongbin16/lin-zsh-prompt.git ~/.lin-zsh-prompt
+echo '[ -f ~/.lin-zsh-prompt/lin-zsh-prompt.sh ] && source ~/.lin-zsh-prompt/lin-zsh-prompt.sh' >> ~/.zshrc
 echo 'changeps1: False' >> ~/.condarc
 ```
 
