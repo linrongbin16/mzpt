@@ -1,5 +1,3 @@
-set -x
-
 _zsh_prompt_detect_conda() {
     if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
         _ZSH_PROMPT_CONDA="( $CONDA_DEFAULT_ENV) "
