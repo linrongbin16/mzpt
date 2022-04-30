@@ -1,14 +1,14 @@
-# lin-zsh-prompt
+# mzpt
 
-A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.com/romkatv/powerlevel10k).
+A minimal zsh prompt theme, inspired by [powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
 # Introduction
 
-![screenshot.png](https://raw.githubusercontent.com/linrongbin16/lin-zsh-prompt-screenshot/main/screenshot-basic2.png)
+![screenshot.png](https://raw.githubusercontent.com/linrongbin16/mzpt-screenshot/main/screenshot-basic2.png)
 
 - Left Side:
   - `username@hostname`: username and hostname.
-  - ` ~/.lin-zsh-prompt`: operating system and working directory.
+  - ` ~/.mzpt`: operating system and working directory.
   - `( main*)`: git branch and modified/deleted/untracted files if exist.
   - `[√]/[?130]`: last command exit status.
 - Right Side:
@@ -22,11 +22,7 @@ A zsh prompt theme implementation, inspired by [powerlevel10k](https://github.co
 # Installation
 
 ```bash
-git clone https://github.com/linrongbin16/lin-zsh-prompt.git ~/.lin-zsh-prompt
-echo '[ -f ~/.lin-zsh-prompt/lin-zsh-prompt.sh ] && source ~/.lin-zsh-prompt/lin-zsh-prompt.sh' >> ~/.zshrc
+git clone https://github.com/linrongbin16/mzpt.git ~/.mzpt
+echo '[ -f ~/.mzpt/mzpt.sh ] && source ~/.mzpt/mzpt.sh' >> ~/.zshrc
 echo 'changeps1: False' >> ~/.condarc
 ```
-
-# Reference
-
-- [zsh - Functions](https://zsh.sourceforge.io/Doc/Release/Functions.html)
