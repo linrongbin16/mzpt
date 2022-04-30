@@ -4,7 +4,7 @@ A minimal zsh prompt theme, inspired by [powerlevel10k](https://github.com/romka
 
 # Introduction
 
-![screenshot.png](https://raw.githubusercontent.com/linrongbin16/mzpt-screenshot/main/screenshot-basic2.png)
+![screenshot.png](https://raw.githubusercontent.com/linrongbin16/mzpt-screenshot/main/screenshot-basic3.png)
 
 - Left Side:
   - `username@hostname`: username and hostname.
