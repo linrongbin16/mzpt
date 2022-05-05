@@ -9,7 +9,7 @@ _mzpt_conda() {
 _mzpt_git() {
     local _git_branch=$(git branch --show-current 2>/dev/null)
     if [ ! -z "$_git_branch" ]; then
-        if [ ! -z "$(git ls-files --exclude-standard --others -md 2>/dev/null | head -n 1)" ]; then
+        if [ ! -z "$(git status --short 2>/dev/null | head -n 1)" ]; then
             _MZPT_GIT="( $_git_branch*) "
         else
             _MZPT_GIT="( $_git_branch) "
