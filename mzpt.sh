@@ -6,37 +6,8 @@ _mzpt_conda() {
     fi
 }
 
-_mzpt_detect_git_branch1() {
-    git branch --show-current 2>/dev/null
-}
-
-_mzpt_detect_git_branch2() {
-    local _save_dir=$(pwd)
-    while true; do
-        local _current_dir=$(pwd)
-        if [[ "$_current_dir" == "/" ]]; then
-            local _head="$_current_dir.git/HEAD"
-        else
-            local _head="$_current_dir/.git/HEAD"
-        fi
-        if [ -r $_head ]; then
-            local _branch=$(cat "$_head")
-            if [[ "$_branch" =~ "^ref: refs/heads/.*" ]]; then
-                echo ${_branch:16}
-            fi
-            break
-        fi
-        if [[ "$_current_dir" == "/" ]]; then
-            echo ""
-            break
-        fi
-        cd ..
-    done
-    cd $_save_dir 2>/dev/null
-}
-
 _mzpt_git() {
-    local _git_branch=$(_mzpt_detect_git_branch2)
+    local _git_branch=$(git branch --show-current 2>/dev/null)
     if [ ! -z "$_git_branch" ]; then
         if [ ! -z "$(git ls-files --exclude-standard --others -md 2>/dev/null | head -n 1)" ]; then
             _MZPT_GIT="( $_git_branch*) "
