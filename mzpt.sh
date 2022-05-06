@@ -9,7 +9,8 @@ _mzpt_conda() {
 _mzpt_git() {
     local _git_branch=$(git branch --show-current 2>/dev/null)
     if [ ! -z "$_git_branch" ]; then
-        if [ ! -z "$(git status --short 2>/dev/null | head -n 1)" ]; then
+        local _git_status=$(git status --short 2>/dev/null)
+        if [ ! -z "$_git_status" ]; then
             _MZPT_GIT="( $_git_branch*) "
         else
             _MZPT_GIT="( $_git_branch) "
@@ -62,10 +63,6 @@ _mzpt_os() {
     esac
 }
 
-_mzpt_hostname() {
-    _MZPT_HOSTNAME=$(hostname)
-}
-
 _mzpt_delimiter() {
     # detect exit code first since
     local _exit_code_len=${#_MZPT_EXIT_CODE}
@@ -74,7 +71,8 @@ _mzpt_delimiter() {
     fi
     local _conda_len=${#_MZPT_CONDA}
     local _username_len=${#USERNAME}
-    local _hostname_len=${#_MZPT_HOSTNAME}
+    local _hostname=$(hostname)
+    local _hostname_len=${#_hostname}
     local _os_len=${#_MZPT_OS}
     local _dir_value=$(dirs)
     local _dir_len=${#_dir_value}
@@ -89,7 +87,6 @@ _mzpt_precmd() {
     # cache exit code immediately
     _MZPT_EXIT_CODE=$?
     _mzpt_os
-    _mzpt_hostname
     _mzpt_conda
     _mzpt_git
     _mzpt_delimiter
