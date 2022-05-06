@@ -18,6 +18,7 @@ A minimal zsh prompt theme, inspired by [powerlevel10k](https://github.com/romka
 # Requirement
 
 - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) for icons.
+- (Optional) [gitstatus](https://github.com/romkatv/gitstatus) for better git status and performance.
 
 # Installation
 
@@ -26,3 +27,7 @@ git clone https://github.com/linrongbin16/mzpt.git ~/.mzpt
 echo '[ -f ~/.mzpt/mzpt.sh ] && source ~/.mzpt/mzpt.sh' >> ~/.zshrc
 echo 'changeps1: False' >> ~/.condarc
 ```
+
+# Credit
+
+[gitstatus](https://github.com/romkatv/gitstatus)

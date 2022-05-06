@@ -7,16 +7,37 @@ _mzpt_conda() {
 }
 
 _mzpt_git() {
-    local _git_branch=$(git branch --show-current 2>/dev/null)
-    if [ ! -z "$_git_branch" ]; then
-        local _git_status=$(git status --short 2>/dev/null)
-        if [ ! -z "$_git_status" ]; then
-            _MZPT_GIT="( $_git_branch*) "
+    _MZPT_GIT=''
+    _MZPT_GIT_LEN=0
+    local branch=$(git branch --show-current 2>/dev/null)
+    if [ ! -z "$branch" ]; then
+        local status=$(git status --short 2>/dev/null)
+        if [ ! -z "$status" ]; then
+            local p="( $branch*) "
         else
-            _MZPT_GIT="( $_git_branch) "
+            local p="( $branch) "
         fi
+        _MZPT_GIT="%F{magenta}$p%f"
+        _MZPT_GIT_LEN=${#p}
+    fi
+}
+
+_mzpt_gitstatus() {
+    _MZPT_GIT=''
+    _MZPT_GIT_LEN=0
+    if [ ! -z "$GITSTATUS_PROMPT" ]; then
+        local branch=${GITSTATUS_PROMPT//"%76F"/"%F{magenta}"}
+        _MZPT_GIT="%F{magenta}( $branch%F{magenta})%f "
+        _MZPT_GIT_LEN=$(($GITSTATUS_PROMPT_LEN+5))
+    fi
+}
+
+_mzpt_git2() {
+    local exist=${GITSTATUS_PROMPT_LEN+x}
+    if [ ${#exist} -gt 0 ]; then
+        _mzpt_gitstatus
     else
-        _MZPT_GIT=""
+        _mzpt_git
     fi
 }
 
@@ -76,8 +97,7 @@ _mzpt_delimiter() {
     local _os_len=${#_MZPT_OS}
     local _dir_value=$(dirs)
     local _dir_len=${#_dir_value}
-    local _git_len=${#_MZPT_GIT}
-    local _left_len=$(($_username_len+1+$_hostname_len+1+$_os_len+$_dir_len+1+$_git_len+2+$_exit_code_len))
+    local _left_len=$(($_username_len+1+$_hostname_len+1+$_os_len+$_dir_len+1+$_MZPT_GIT_LEN+2+$_exit_code_len))
     local _right_len=$((1+$_conda_len+6))
     local _delimiter_len=$(($COLUMNS-$_left_len-$_right_len))
     _MZPT_DELIMITER=$(printf "%${_delimiter_len}s" | tr " " "─")
@@ -88,7 +108,7 @@ _mzpt_precmd() {
     _MZPT_EXIT_CODE=$?
     _mzpt_os
     _mzpt_conda
-    _mzpt_git
+    _mzpt_git2
     _mzpt_delimiter
 }
 
@@ -96,5 +116,5 @@ precmd_functions+=( _mzpt_precmd )
 
 setopt prompt_subst
 
-export PROMPT='%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_MZPT_OS}%~%f %F{magenta}${_MZPT_GIT}%f[%(?.%F{green}√.%F{red}?%?)%f] %F{#606060}${_MZPT_DELIMITER}%f %F{#FF8000}${_MZPT_CONDA}%f%D{%H:%M}
+export PROMPT='%F{cyan}%n%f@%F{#9933FF}%M%f %F{blue}${_MZPT_OS}%~%f ${_MZPT_GIT}[%(?.%F{green}√.%F{red}?%?)%f] %F{#606060}${_MZPT_DELIMITER}%f %F{#FF8000}${_MZPT_CONDA}%f%D{%H:%M}
 %F{blue}%(!.#.$)%f '
