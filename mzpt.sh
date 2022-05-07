@@ -6,7 +6,7 @@ _mzpt_conda() {
     fi
 }
 
-_mzpt_git() {
+_mzpt_git_cmd() {
     _MZPT_GIT=''
     _MZPT_GIT_LEN=0
     local branch=$(git branch --show-current 2>/dev/null)
@@ -32,12 +32,12 @@ _mzpt_gitstatus() {
     fi
 }
 
-_mzpt_git2() {
+_mzpt_git() {
     local exist=${GITSTATUS_PROMPT_LEN+x}
     if [ ${#exist} -gt 0 ]; then
         _mzpt_gitstatus
     else
-        _mzpt_git
+        _mzpt_git_cmd
     fi
 }
 
@@ -84,20 +84,22 @@ _mzpt_os() {
     esac
 }
 
+_mzpt_hostname() {
+    local _hostname=$(hostname)
+    _MZPT_HOSTNAME_LEN=${#_hostname}
+}
+
 _mzpt_delimiter() {
-    # detect exit code first since
-    local _exit_code_len=${#_MZPT_EXIT_CODE}
-    if [ $_MZPT_EXIT_CODE -ne 0 ]; then
+    local _exit_code_len=${#_MZPT_SAVED_EXIT_CODE}
+    if [ $_MZPT_SAVED_EXIT_CODE -ne 0 ]; then
         _exit_code_len=$(($_exit_code_len+1))
     fi
     local _conda_len=${#_MZPT_CONDA}
     local _username_len=${#USERNAME}
-    local _hostname=$(hostname)
-    local _hostname_len=${#_hostname}
     local _os_len=${#_MZPT_OS}
     local _dir_value=$(dirs)
     local _dir_len=${#_dir_value}
-    local _left_len=$(($_username_len+1+$_hostname_len+1+$_os_len+$_dir_len+1+$_MZPT_GIT_LEN+2+$_exit_code_len))
+    local _left_len=$(($_username_len+1+$_MZPT_HOSTNAME_LEN+1+$_os_len+$_dir_len+1+$_MZPT_GIT_LEN+2+$_exit_code_len))
     local _right_len=$((1+$_conda_len+6))
     local _delimiter_len=$(($COLUMNS-$_left_len-$_right_len))
     _MZPT_DELIMITER=$(printf "%${_delimiter_len}s" | tr " " "─")
@@ -105,12 +107,14 @@ _mzpt_delimiter() {
 
 _mzpt_precmd() {
     # cache exit code immediately
-    _MZPT_EXIT_CODE=$?
-    _mzpt_os
+    _MZPT_SAVED_EXIT_CODE=$?
+    _mzpt_git
     _mzpt_conda
-    _mzpt_git2
     _mzpt_delimiter
 }
+
+_mzpt_os
+_mzpt_hostname
 
 precmd_functions+=( _mzpt_precmd )
 
