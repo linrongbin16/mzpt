@@ -25,7 +25,7 @@ _mzpt_git_cmd() {
 _mzpt_gitstatus() {
     _MZPT_GIT=''
     _MZPT_GIT_LEN=0
-    if [ ! -z "$GITSTATUS_PROMPT" ]; then
+    if [ $GITSTATUS_PROMPT_LEN -gt 0 ]; then
         local branch=${GITSTATUS_PROMPT//"%76F"/"%F{magenta}"}
         _MZPT_GIT="%F{magenta}( $branch%F{magenta})%f "
         _MZPT_GIT_LEN=$(($GITSTATUS_PROMPT_LEN+5))
