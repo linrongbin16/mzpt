@@ -28,9 +28,9 @@ _mzpt_gitstatus() {
     _MZPT_GIT_LEN=0
     if [ $GITSTATUS_PROMPT_LEN -gt 0 ]; then
         local _76f="%76F"
-        local _fmagenta="%F{magenta}"
-        local branch=${GITSTATUS_PROMPT//"$_76f"/"$_fmagenta"}
-        _MZPT_GIT="$_fmagenta( $branch$_fmagenta)%f "
+        local fmagenta="%F{magenta}"
+        local branch=${GITSTATUS_PROMPT//"$_76f"/"$fmagenta"}
+        _MZPT_GIT="$fmagenta( $branch$fmagenta)%f "
         _MZPT_GIT_LEN=$(($GITSTATUS_PROMPT_LEN+5))
     fi
 }
@@ -106,7 +106,8 @@ _mzpt_delimiter() {
     local _dir_value=$(dirs)
     local _dir_len=${#_dir_value}
     local _left_len=$(($_username_len+1+$_MZPT_HOSTNAME_LEN+1+$_MZPT_OS_LEN+$_dir_len+1+$_MZPT_GIT_LEN+2+$_MZPT_SAVED_EXIT_CODE_LEN))
-    local _right_len=$((1+$_MZPT_CONDA_LEN+6))
+    local _time_len=5
+    local _right_len=$((1+$_MZPT_CONDA_LEN+1+$_time_len))
     local _delimiter_len=$(($COLUMNS-$_left_len-$_right_len))
     _MZPT_DELIMITER=$(printf "%${_delimiter_len}s" | tr " " "─")
 }
